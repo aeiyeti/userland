@@ -28,10 +28,7 @@ endif()
 
 # construct the vmcs config header file
 add_definitions(-DHAVE_VMCS_CONFIG)
-configure_file (
-    "${vmcs_root}/host_applications/vmcs/vmcs_config.h.in"
-    "${PROJECT_BINARY_DIR}/vmcs_config.h"
-    )
+configure_file(host_applications/vmcs/vmcs_config.h.in ${PROJECT_BINARY_DIR}/vmcs_config.h)
 
 # install an ld.so.conf file to pick up our shared libraries
 #configure_file (${vmcs_root}/makefiles/cmake/srcs/vmcs.conf.in

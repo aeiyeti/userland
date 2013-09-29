@@ -14,17 +14,13 @@ target_link_libraries(vcfiled
                       vchiq_arm
                       vcos)
 
-install(TARGETS vcfiled 
-        RUNTIME DESTINATION sbin)
+install(TARGETS vcfiled RUNTIME DESTINATION sbin)
 
 configure_file (etc/init.d/vcfiled ${PROJECT_BINARY_DIR}/etc/init.d/vcfiled)
-
 # script to start up vcfiled at start of day
-install(PROGRAMS ${PROJECT_BINARY_DIR}/etc/init.d/vcfiled
-        DESTINATION /etc/init.d)
+install(PROGRAMS ${PROJECT_BINARY_DIR}/etc/init.d/vcfiled DESTINATION /etc/init.d)
 # install locally to the installation directory too
-install(PROGRAMS ${PROJECT_BINARY_DIR}/etc/init.d/vcfiled
-        DESTINATION ${VMCS_INSTALL_PREFIX}/share/install)
+install(PROGRAMS ${PROJECT_BINARY_DIR}/etc/init.d/vcfiled DESTINATION share/install)
 
 # test program for vcfiled_check library
 add_executable(vcfiled_lock_test vcfiled_lock_test.c)
