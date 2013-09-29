@@ -7,9 +7,9 @@ if [ "armv6l" = `arch` ]; then
 	cmake -DCMAKE_BUILD_TYPE=Release ../../..
 	make
 	if [ "$1" != "" ]; then
-	 sudo make install DESTDIR=$1
+	 make install DESTDIR=$1
 	else
-	 sudo make install
+	 make install
 	fi
 else
 	# Cross compile on a more capable machine
@@ -17,10 +17,8 @@ else
 	pushd build/arm-linux/release/
 	cmake -DCMAKE_TOOLCHAIN_FILE=../../../makefiles/cmake/toolchains/arm-linux-gnueabihf.cmake -DCMAKE_BUILD_TYPE=Release ../../..
 	make -j 6
-
 	if [ "$1" != "" ]; then
-	 sudo make install DESTDIR=$1
+	 make install DESTDIR=$1
 	fi
 fi
 popd
-
